@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
+:root {
+    --primary: #06ff89;
+    --primary-contrast: #012233;
+    --black: #000;
+    --white: #fff;
+    --text: #797575;
+    --border: #fefefe;
+    --btn-df-bg: #ccc;
+    --background: #012233;
+
+    --title-lg-fs: 10rem;
+    --title-fs: 8rem;
+    --heading-fs: 5rem;
+    --subheading-fs: 2.4rem;
+    --text-fs: 1.8rem;
+    --text-sm-fs: 1.5rem;
+    --text-lg-fs: 2rem;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Pacifico', cursive;
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 2rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a[href] {
+    text-decoration: none;
+    color: var(--text);
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  .modal-content {
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    position: relative;
+    z-index: 10;
+    padding: 30px;
+  }
+
+  .modal-main {
+    overscroll-behavior-y: contain;
+
+  }
+
+.btn {
+    font-family: 'Pacifico', cursive;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background-color: var(--btn-df-bg);
+    border: 2px solid var(--btn-df-bg);
+    transition: all 0.5s;
+    cursor: pointer;
+    font-size: var(--text-fs);
+}
+
+.btn:hover {
+    background-color: var(--white);
+}
+
+.btn.full-width {
+    width: 100%;
+}
+
+.btn.btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-contrast);
+    border-color: var(--primary);
+}
+
+.btn.btn-light {
+    background-color: var(--white);
+    color: var(--primary-contrast);
+    border-color: var(--primary-contrast);
+}
+
+.btn.btn-contrast {
+    background-color: var(--primary-contrast);
+    color: var(--primary);
+    border-color: var(--primary-contrast);
+}
+
+.btn.btn-primary:hover {
+    background-color: var(--primary-contrast);
+    color: var(--primary);
+}
+
+.btn.btn-contrast:hover {
+    background-color: var(--primary);
+    color: var(--primary-contrast);
+}
+
+.btn.btn-light:hover {
+    background-color: var(--primary-contrast);
+    color: var(--primary);
+}
+
+.input {
+    border: none;
+    padding: 8px 16px;
+    font-size: var(--text-fs);
+    border-radius: 5px;
+    font-family: 'Pacifico', cursive;
+}
+
+.input.input-light {
+    background-color: var(--white);
+    color: var(--primary-contrast);
+    border-color: var(--primary-contrast);
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    min-height: 20vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: var(--title-fs);
+    color: var(--primary);
+    margin-bottom: 40px;
+}
+
+.heading {
+    font-size: var(--heading-fs);
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.redirect-btn {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+}
+
+.container.full-h {
+    height: 100vh;
+}
+
+#app {
+    min-height: 100vh;
+    background-color: var(--background);
+}

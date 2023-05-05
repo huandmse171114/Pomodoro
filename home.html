@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Pomodoro</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="setting-section">
+            <h1 class="app-heading">Pomodoro</h1>
+            <ul class="setting-list">
+                <li class="setting-item report-btn btn btn-primary coming-soon">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    Report
+                </li>
+                <li class="setting-item setting-btn btn btn-primary">
+                    <i class="fa-solid fa-gear"></i>
+                    Setting
+                </li>
+                <li class="setting-item login-btn btn btn-primary coming-soon">
+                    <i class="fa-solid fa-user"></i>
+                    Login
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-container container">
+            <div class="main-section">
+                <div class="timer-section">
+                    <ul class="timer-option-list">
+                        <li class="timer-option-item btn btn-light">Pomodoro</li>
+                        <li class="timer-option-item btn btn-light">Short Break</li>
+                        <li class="timer-option-item btn btn-light">Long Break</li>
+                    </ul>
+                    <div class="timer-view"></div>
+                    <div class="timer-image">
+                        <img src="assets/img/tree.png" alt="">
+                    </div>
+                    <div class="timer-controller">
+                        <div class="controller-group">
+                            <span>-15s</span>
+                            <button class="backward-btn control-btn btn btn-light">
+                                <i class="fa-solid fa-backward"></i>
+                            </button>
+                            <button class="pause-btn control-btn btn btn-light">
+                                <i class="fa-solid fa-pause"></i>
+                            </button>
+                            <button class="forward-btn control-btn btn btn-light">
+                                <i class="fa-solid fa-forward"></i>
+                            </button>
+                            <span>+15s</span>
+                        </div>
+                        <button class="start-btn control-btn btn btn-light full-width">Start</button>
+                    </div>
+                </div>
+                <div class="tasks-section">
+                    <div class="tasks-heading">
+                        <input type="text" class="tasks-input input input-light" placeholder="Enter tasks here...">
+                        <button class="tasks-submit-btn btn btn-primary">
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </button>
+                    </div>
+                    <p class="tasks-guide">
+                        Guide: Single click to checked complete task <br/>
+                        Double click to remove task</p>
+                    <ul class="tasks-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="audio-container container">
+            <div class="audio-section">
+                <div class="audio-heading">
+                    <div class="audio-center">
+                        <img src="assets/img/audioDemo.jpg" class="audio-image" alt="Song image">
+                        <h2 class="audio-title">Toan cao cap lofi cuc chill</h2>
+                    </div>
+                    <div class="audio-controller">
+                        <i class="fa-solid fa-shuffle"></i>
+                        <i class="fa-solid fa-backward-step"></i>
+                        <div class="play-control">
+                            <i class="play-control-btn pause-btn hidden fa-solid fa-pause"></i>
+                            <i class="play-control-btn play-btn fa-solid fa-play"></i>
+                        </div>
+                        <i class="fa-solid fa-forward-step"></i>
+                        <i class="fa-solid fa-repeat"></i>
+                    </div>
+                    <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+                    <audio src=""></audio>
+                </div>
+                <ul class="audio-playlist">
+                    <li class="playlist-item">
+                        <img src="assets/img/audioDemo.jpg" class="playlist-item-img" alt="">
+                        <div>
+                            <p class="playlist-item-title">Toan cao cap lofi cuc chill</p>
+                            <p class="playlist-item-author">Minh Huan</p>
+                        </div>
+                    </li>
+                    <li class="playlist-item">
+                        <img src="assets/img/audioDemo.jpg" class="playlist-item-img" alt="">
+                        <div>
+                            <p class="playlist-item-title">Toan cao cap lofi cuc chill</p>
+                            <p class="playlist-item-author">Minh Huan</p>
+                        </div>
+                    </li>
+                    <li class="playlist-item">
+                        <img src="assets/img/audioDemo.jpg" class="playlist-item-img" alt="">
+                        <div>
+                            <p class="playlist-item-title">Toan cao cap lofi cuc chill</p>
+                            <p class="playlist-item-author">Minh Huan</p>
+                        </div>
+                    </li>
+                    <li class="playlist-item">
+                        <img src="assets/img/audioDemo.jpg" class="playlist-item-img" alt="">
+                        <div>
+                            <p class="playlist-item-title">Toan cao cap lofi cuc chill</p>
+                            <p class="playlist-item-author">Minh Huan</p>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <a href="index.html" class="redirect-btn btn btn-primary">
+            Back
+        </a>
+    </div>
+    <div class="setting-modal modal">
+        <div class="modal-overlay setting-modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-main">
+                <h2 class="modal-title">Setting</h2>
+                <div class="modal-group">
+                    <div class="modal-head">
+                        <i class="fa-solid fa-clock"></i>
+                        <h3 class="modal-heading">Timer (Seconds)</h3>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="timer-setting-list">
+                            <li class="timer-setting-item">
+                                <label for="pomodoro-time-input">Pomodoro</label>
+                                <input required class="timer-setting-input" id="pomodoro-time-input" type="number" name="" min="0" max="180" id="">
+                            </li>
+                            <li class="timer-setting-item">
+                                <label for="sBreak-time-input">Short Break</label>
+                                <input required class="timer-setting-input" id="sBreak-time-input" type="number" name="" min="0" max="180" id="">
+                            </li>
+                            <li class="timer-setting-item">
+                                <label for="lBreak-time-input">Long Break</label>
+                                <input required class="timer-setting-input" id="lBreak-time-input" type="number" name="" min="0" max="180" id="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="setting-modal-btn btn btn-contrast">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/home.js"></script>
+</body>
+
+</html>
