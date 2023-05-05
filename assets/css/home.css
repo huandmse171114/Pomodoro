@@ -25,6 +25,19 @@
     margin-right: 5px;
 }
 
+.back-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    padding: 20px;
+    cursor: pointer;
+}
+
+.back-btn i {
+    font-size: var(--text-fs);
+}
+
 .setting-item.coming-soon {
     opacity: 0.5;
     cursor: default;
@@ -165,6 +178,7 @@
     color: #d3d3d3;
     opacity: 0.5;
     letter-spacing: 2px;
+    padding: 24px;
 }
 
 .tasks-input {
@@ -378,6 +392,8 @@
         justify-content: space-between;
         position: relative;
         overflow: hidden;
+        padding: 8px 0;
+        padding-left: 12px;
     }
 
     .audio-section {
@@ -391,13 +407,25 @@
     .setting-list {
         display: flex;
         flex-direction: column;
-        width: 30%;
+        width: 40%;
+        z-index: 1;
         transform: translateX(140%);
+    }
+
+    .setting-item {
+        border-radius: 0;
+        font-size: 1.2rem;
     }
 
     .menu-bar {
         display: block;
+        transition: all 0.25s linear;
     }
+
+    .back-btn {
+        display: flex;
+    }
+    
 
     .tasks-heading {
         display: flex;
