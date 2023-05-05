@@ -160,7 +160,7 @@ function handlingTaskViewControl() {
         tasksInput.value = "";
         const newTaskItem = document.createElement("li");
         newTaskItem.classList.add("tasks-item");
-        newTaskItem.innerHTML = tasks[tasks.length - 1];
+        newTaskItem.textContent = tasks[tasks.length - 1];
 
         //single click to checked / unchecked tasks handling
         newTaskItem.addEventListener("click", () => {
@@ -199,9 +199,9 @@ function handlingSettingModal() {
     })
 
     settingModalBtn.addEventListener("click", () => {
-        window.config.Pomodoro = pomodoroSetting.value ? pomodoroSetting.value : 25 * 60
-        window.config.ShortBreak = sBreakSetting.value ? sBreakSetting.value : 5 * 60
-        window.config.LongBreak = lBreakSetting.value ? lBreakSetting.value : 15 * 60
+        window.config.Pomodoro = pomodoroSetting.value || 25 * 60
+        window.config.ShortBreak = sBreakSetting.value || 5 * 60
+        window.config.LongBreak = lBreakSetting.value || 15 * 60
         settingModal.style.display = "none";
         render();
     })
@@ -223,8 +223,8 @@ function secToMinAndSec(sec) {
 
 function timeViewToSecs(timeView) {
     let timeViewParts = timeView.split(":");
-    timeViewParts = timeViewParts.map(part => parseInt(part));
-    return timeViewParts[0] * 60 + timeViewParts[1];
+    [minutes, seconds] = timeViewParts.map(part => parseInt(part));
+    return minutes * 60 + seconds;
 }
 
 function app() {
