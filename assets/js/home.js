@@ -1,9 +1,9 @@
 // ---------------------- Timer handling -----------------------
 // Setting default config for web app
 window.config = {
-    Pomodoro: 5, //25 minutes
-    ShortBreak: 5, //5 minutes
-    LongBreak: 10, //15 minutes
+    Pomodoro: 1500, //25 minutes
+    ShortBreak: 300, //5 minutes
+    LongBreak: 600, //15 minutes
     timingOption: "Pomodoro",
     shortBreakNo: 0, //number of short break before having long break, reset at 2
     tasks: [],
@@ -152,11 +152,101 @@ function handlingTimingControl() {
 function handlingTaskViewControl() {
     const tasksList = document.querySelector(".tasks-list");
     const tasksSubmitBtn = document.querySelector(".tasks-submit-btn");
+    var todos;
+
+    async function getTodos() {
+        const response = await fetch("http://localhost:8085/api/todos");
+        todos = await response.json();
+        todos.forEach(todo => {
+            let todoItem = document.createElement("li");
+            todoItem.classList.add("tasks-item");
+            todoItem.dataset.id = todo.id;
+            todoItem.textContent = todo.value;
+
+            //single click to checked / unchecked tasks handling
+            todoItem.addEventListener("click", () => {
+                if (todoItem.classList.contains("checked")) {
+                    todoItem.classList.remove("checked");
+                }else {
+                    todoItem.classList.add("checked");
+                }
+                
+                
+            })
+
+            // double click to remove tasks handling
+            todoItem.addEventListener("dblclick", () => {
+                tasksList.removeChild(todoItem);
+            })
+
+            switch (todo.status) {
+                //status = 1: on going
+                case 1:
+                    tasksList.appendChild(todoItem);
+                    break;
+                //status = 2: finished
+                case 2:
+                    todoItem.style.textDecoration = "line-through"
+                    tasksList.appendChild(todoItem);
+                    break;
+                //status = 3: removed
+                case 3: 
+                    break;
+                default:
+                    console.log("Default case")
+            }
+        })
+    }
+
+    getTodos();
+
+    async function updateTodoStatus(id, status) {
+        try {
+            const response = await fetch(`http://localhost:8085/api/todos/${id}/${status}`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+          } catch (error) {
+            console.error("Error:", error);
+          }
+    }
+
+    async function deleteTodoStatus(id) {
+        try {
+            const response = await fetch(`http://localhost:8085/api/todos/${id}`, {
+              method: "DELETE",
+            });
+          } catch (error) {
+            console.error("Error:", error);
+          }
+    }
+
+
+    async function saveTodo(data) {
+        try {
+          const response = await fetch("http://localhost:8085/api/todos", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+      
+          const result = await response.json();
+          console.log("Success:", result);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
 
     tasksSubmitBtn.addEventListener("click", () => {
         const tasks = window.config.tasks;
         const tasksInput = document.querySelector(".tasks-input");
-        tasks.push(tasksInput.value);
+        var value = tasksInput.value;
+        tasks.push(value);
         tasksInput.value = "";
         const newTaskItem = document.createElement("li");
         newTaskItem.classList.add("tasks-item");
@@ -164,7 +254,13 @@ function handlingTaskViewControl() {
 
         //single click to checked / unchecked tasks handling
         newTaskItem.addEventListener("click", () => {
-            newTaskItem.classList.toggle("checked");
+            if (newTaskItem.classList.contains("checked")) {
+                newTaskItem.classList.remove("checked");
+                updateTodoStatus(newTaskItem.dataset.id, 1)
+            }else {
+                newTaskItem.classList.add("checked");
+                updateTodoStatus(newTaskItem.dataset.id, 2)
+            }
         })
 
         // double click to remove tasks handling
@@ -174,6 +270,7 @@ function handlingTaskViewControl() {
 
 
         tasksList.appendChild(newTaskItem);
+        saveTodo({value: value, status: 1})
     })
 
 }
