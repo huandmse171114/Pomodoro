@@ -155,7 +155,7 @@ function handlingTaskViewControl() {
     var todos;
 
     async function getTodos() {
-        const response = await fetch("http://localhost:8085/api/todos");
+        const response = await fetch("https://headspindemo-production.up.railway.app/api/todos");
         todos = await response.json();
         todos.forEach(todo => {
             let todoItem = document.createElement("li");
@@ -202,7 +202,7 @@ function handlingTaskViewControl() {
 
     async function updateTodoStatus(id, status) {
         try {
-            const response = await fetch(`http://localhost:8085/api/todos/${id}/${status}`, {
+            const response = await fetch(`https://headspindemo-production.up.railway.app/api/todos/${id}/${status}`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -215,7 +215,7 @@ function handlingTaskViewControl() {
 
     async function deleteTodoStatus(id) {
         try {
-            const response = await fetch(`http://localhost:8085/api/todos/${id}`, {
+            const response = await fetch(`https://headspindemo-production.up.railway.app/api/todos/${id}`, {
               method: "DELETE",
             });
           } catch (error) {
@@ -226,7 +226,7 @@ function handlingTaskViewControl() {
 
     async function saveTodo(data) {
         try {
-          const response = await fetch("http://localhost:8085/api/todos", {
+          const response = await fetch("https://headspindemo-production.up.railway.app/api/todos", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
